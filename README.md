@@ -24,23 +24,49 @@ The integration of the low-cost, portable **ESP32** with the high-level language
 
 ## 🔄 Data Flow Diagram: The BLITZ VISION Process
 
-The BLITZ VISION system operates as a rapid, closed-loop interaction between the portable **ESP32** Edge Device and the powerful **Cloud Server**.
-
-```mermaid
-graph TD
-    A[1. ESP32 (Edge)] -->|HTTP POST: Image Bytes| B;
-    B[2. Flask Server] -->|API Request: Image + Prompt| C;
-    C[3. OpenAI / GPT-4o] -->|API Response: Description Text| D;
-    D[4. Flask Server] -->|API Request: Description Text| E;
-    E[5. Google Cloud TTS] -->|HTTP/API Response: MP3 Audio Stream| F;
-    F[6. ESP32 (Edge)] --> G;
-    G[Saves Locally & Plays Audio]
-
-    subgraph Server Flow
-        B
-        D
-    end
-    subgraph Cloud AI Services
-        C
-        E
-    end
+┌─────────────────────┐
+│ 1. ESP32 (Edge)     │
+│  - Captures image   │
+│  - Sends raw bytes  │
+└─────────┬───────────┘
+          │
+          │ (HTTP POST Request: Image Bytes)
+          ▼
+┌─────────────────────┐
+│ 2. Flask Server     │
+│  - Receives image   │
+│  - Forwards to AI   │
+└─────────┬───────────┘
+          │
+          │ (API Request: Image + Prompt)
+          ▼
+┌─────────────────────┐
+│ 3. OpenAI / GPT-4o  │
+│  - Analyzes image   │
+│  - Generates Text   │
+└─────────┬───────────┘
+          │
+          │ (API Response: Description Text)
+          ▼
+┌─────────────────────┐
+│ 4. Flask Server     │
+│  - Receives Text    │
+│  - Forwards to TTS  │
+└─────────┬───────────┘
+          │
+          │ (API Request: Description Text)
+          ▼
+┌─────────────────────┐
+│ 5. Google Cloud TTS │
+│  - Converts text to │
+│    Hebrew MP3 file  │
+└─────────┬───────────┘
+          │
+          │ (HTTP/API Response: MP3 Audio Stream)
+          ▼
+┌─────────────────────┐
+│ 6. ESP32 (Edge)     │
+│  - Receives MP3     │
+│  - **Saves Locally**│
+│  - **Plays Audio** │
+└─────────────────────┘
