@@ -6,7 +6,7 @@ BLITZ VISION is an innovative, portable solution that bridges a compact ESP32 ca
 
 ---
 
-## 📹 Demo Video (הדגמה)
+## 📹 Demo Video 
 
 **[כאן מומלץ להטמיע את הקישור לסרטון ההדגמה ביוטיוב/GIF]**
 
@@ -14,7 +14,7 @@ BLITZ VISION is an innovative, portable solution that bridges a compact ESP32 ca
 
 ---
 
-## 💡 The Value Proposition (הצעת הערך)
+## 💡 The Value Proposition 
 
 BLITZ VISION addresses a critical need for **immediate and context-aware assistance** for the visually impaired. Unlike static identifiers, this system provides a sophisticated, natural language description of objects, enhancing the user's independence and decision-making capabilities in complex environments (such as shopping aisles or identifying household items).
 
