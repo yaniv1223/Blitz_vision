@@ -20,53 +20,15 @@ BLITZ VISION addresses a critical need for **immediate and context-aware assista
 
 The integration of the low-cost, portable **ESP32** with the high-level language understanding of **GPT-4o** and the localization of **Google TTS** creates a powerful tool that moves beyond simple object recognition to offer true **situational awareness** through clear, Hebrew audio feedback.
 
----
+## 4. 🔄 Data Flow: Step-by-Step Process
 
-## 🔄 Data Flow Diagram: The BLITZ VISION Process
+The BLITZ VISION system executes a rapid, six-stage communication loop, converting vision into speech.
 
-┌─────────────────────┐
-│ 1. ESP32 (Edge)     │
-│  - Captures image   │
-│  - Sends raw bytes  │
-└─────────┬───────────┘
-          │
-          │ (HTTP POST Request: Image Bytes)
-          ▼
-┌─────────────────────┐
-│ 2. Flask Server     │
-│  - Receives image   │
-│  - Forwards to AI   │
-└─────────┬───────────┘
-          │
-          │ (API Request: Image + Prompt)
-          ▼
-┌─────────────────────┐
-│ 3. OpenAI / GPT-4o  │
-│  - Analyzes image   │
-│  - Generates Text   │
-└─────────┬───────────┘
-          │
-          │ (API Response: Description Text)
-          ▼
-┌─────────────────────┐
-│ 4. Flask Server     │
-│  - Receives Text    │
-│  - Forwards to TTS  │
-└─────────┬───────────┘
-          │
-          │ (API Request: Description Text)
-          ▼
-┌─────────────────────┐
-│ 5. Google Cloud TTS │
-│  - Converts text to │
-│    Hebrew MP3 file  │
-└─────────┬───────────┘
-          │
-          │ (HTTP/API Response: MP3 Audio Stream)
-          ▼
-┌─────────────────────┐
-│ 6. ESP32 (Edge)     │
-│  - Receives MP3     │
-│  - **Saves Locally**│
-│  - **Plays Audio** │
-└─────────────────────┘
+| Step | Device/Service | Action | Data Transfer |
+| :--- | :--- | :--- | :--- |
+| **1** | 📸 **ESP32 (Edge)** | Image capture and encoding to bytes. | **HTTP POST** (Image Bytes) |
+| **2** | 🧠 **Flask Server** | Receive image and send to AI. | **API Request** (Image + Prompt) to GPT-4o |
+| **3** | 💬 **OpenAI GPT-4o** | Analyze image and generate description. | **API Response** (Hebrew Text Description) |
+| **4** | 🎤 **Flask Server** | Send textual description to TTS service. | **API Request** (Description Text) to Google TTS |
+| **5** | 🎶 **Google Cloud TTS** | Convert text to audio format (MP3). | **HTTP/API Response** (MP3 Audio Stream) |
+| **6** | 🔊 **ESP32 (Edge)** | Receive audio, **save locally, and play**. | **Plays Audio** (Output to User) |
