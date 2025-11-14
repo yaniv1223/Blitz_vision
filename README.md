@@ -8,10 +8,8 @@ BLITZ VISION is an innovative, portable solution that bridges a compact ESP32 ca
 
 ## 📹 Demo Video 
 
-**[כאן מומלץ להטמיע את הקישור לסרטון ההדגמה ביוטיוב/GIF]**
 
-[![Watch the Demo on YouTube](http://img.youtube.com/vi/[YOUR_VIDEO_ID]/0.jpg)](http://www.youtube.com/watch?v=[YOUR_VIDEO_ID])
-
+[![Watch the Demo on YouTube](http://img.youtube.com/vi/8BvyzfvW5dI/0.jpg)](http://www.youtube.com/watch?v=8BvyzfvW5dI)
 ---
 
 ## 💡 The Value Proposition 
